@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GSAP</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        #box1 {
+            background: red;
+        }
+
+        #box2 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="reverse">reverse</button>
+    <button id="play">play</button>
+    <button id="pause">pause</button>
+    <button id="canvasMode">canvasMode</button>
+    <button id="animationMode">AnimationMode</button>
+    <button id="updateCss"> updateCss</button>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+</body>
+
+</html>
