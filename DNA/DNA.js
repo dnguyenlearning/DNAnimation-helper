@@ -54,6 +54,12 @@ const DNA = (function () {
         },
         seekingPosition: function(value){
             tl.seek(value);
+        },
+        setProgress: function(value){
+            tl.progress(value);
+        },
+        getProgress: function(value){
+            return tl.progress() * tl.duration();
         }
     };
 })();

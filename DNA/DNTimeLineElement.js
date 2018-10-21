@@ -8,8 +8,8 @@ export default class DNTimeLineElement {
     }
 
     registerTweensIntoElementTimeLine(options) {
-        this.tweenStart = new DNATween(this.domName, "start", { duration: options.start.duration, css: options.start.css });
-        this.tweenEnd = new DNATween(this.domName, "end", { duration: options.end.duration, css: options.end.css });
+        this.tweenStart = new DNATween(this.domName, "start", { duration: options.start.duration, css: options.start.css || {} });
+        this.tweenEnd = new DNATween(this.domName, "end", { duration: options.end.duration, css: options.end.css || {} });
         this.addTweenToTimeline();
         this.updateTimeOffsetBetween2Tweens(options.offsetTime || 4);
         this.mode = options.mode || "canvas";
@@ -47,8 +47,43 @@ export default class DNTimeLineElement {
         }
     }
 
+
+    removeTween(tl, tween){
+        tl.remove(tween)
+    }
+    removeTimeLine(tl){
+        let children = tl.getChildren();
+            if (!children.length) return;
+            tl.pause();
+            tl.progress(1);
+            children.forEach(tween => {
+                if (tween.name === 'end') {
+                    tween.seek(0);
+                }
+                this.removeTween(tl,tween);
+            });
+            tl.pause(0);
+            tl.remove();
+    }
+
+    startPosition(value){
+        this.tl.seek(value);
+    }
+
+    getTweenStartDuration(){
+        return this.getTween("start").getTween().duration();
+    }
+
     getTimeLineInstance() {
         return this.tl;
+    }
+
+    getDuration(){
+        return this.tl.duration()
+    }
+
+    getProgress(){
+        return this.tl.progress();
     }
 
     play() {
